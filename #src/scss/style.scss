@@ -1,0 +1,316 @@
+@import "mySmartGrid";
+@import "fonts";
+@include reset();
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include thisFont("Roboto-Regular", 400, normal, 24px, #212121, 16px);
+}
+
+.container {
+  @include container();
+}
+
+h1, .header1 {
+  @include thisFont("Roboto-Condensed", 300, normal, 65px, #212121, 56px);
+  @include md {
+    font-size: 50px;
+  }
+  @include sm {
+    font-size: 40px;
+  }
+}
+
+h2, .header2 {
+  @include thisFont("Roboto-Condensed", 300, normal, 53px, #212121, 46px);
+  @include md {
+    font-size: 36px;
+  }
+  @include sm {
+    font-size: 26px;
+  }
+}
+
+p, span, .paragraph {
+  @include thisFont("Roboto-Regular", 400, normal, 24px, #212121, 16px);
+}
+
+a {
+  @include thisFont("Roboto-Regular", 400, normal, 24px, #E10025, 16px);
+  text-decoration: none;
+}
+          
+a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  background-image: url("../img/content-img/csm_dh_loesungen_nrwg_capitolbreslau_2_1920x1080_66a283dabd.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.header__menu_box {
+  background-color: #fff;
+}
+
+.social_media_list {
+  display: flex;
+  gap: 10px
+}
+
+.social_media_item {
+  width: 30px;
+  height: 30px;
+}
+.social_media_item a {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.social_media_vk {
+  background-image: url("../img/content-img/vk_icon.svg");
+}
+.social_media_text {
+  clip:rect(1px, 1px, 1px, 1px);
+  position: absolute;
+}
+.social_media_fb {
+  background-image: url("../img/content-img/fb_icon.svg");
+}
+.social_media_ins {
+  background-image: url("../img/content-img/ins_icon.svg");
+}
+.social_media_yt {
+  background-image: url("../img/content-img/yt_icon.svg");
+}
+
+.header__top_container {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: space-between;
+}
+
+.search_btn {
+  background-image: url("../img/content-img/search_icon.svg");
+  width: 24px;
+  height: 24px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.search_field {
+  border: 2px solid #9E9E9E;
+  background-color: #fff;
+  outline: none;
+  display: none;
+  @include placeholder(#9E9E9E, 14px, "Roboto-Condensed");
+  margin-right: 20px;
+  padding: 5px;
+}
+.search_label {
+  display: flex;
+  align-items: center;
+}
+
+.header__menu_box .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 135px;
+}
+
+.header__logoLink {
+}
+.header__logo {
+  width: 215px;
+  height: 50px;
+}
+.header__menu {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  gap: 30px;
+
+}
+.header__menu_item {
+  @include thisFont("Roboto Condensed", 400, normal, 23px, #9E9E9E, 20px);
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 32px;
+    max-width: 0;
+    background-color: #E10025;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 16px);
+    transition: max-width 0.3s ease-out;
+  }
+  &:hover::after {
+    max-width: 32px;
+  }
+}
+.header__sliderbox {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.header__slider {
+}
+.header__slide {
+}
+.slide_title {
+  color: #FFFFFF;
+}
+.slide_text {
+  @include thisFont("Roboto-Regular", 400, normal, 28px, #FFFFFF, 20px);
+  display: inline-block;
+  margin: 35px 0;
+}
+
+.header__slide_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 180px;
+  height: 55px;
+  border: 2px solid #ffffff;
+  @include thisFont("Roboto-Condensed", 400, normal, 23px, #FFFFFF, 20px);
+}
+.header__sliderbox .container {
+  position: relative;
+}
+
+.header__slider_dots {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 27px;
+  left: calc(50% - 30px);
+}
+.header__slider_dots button {
+  display: block;
+  font-size: 0;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.header__slider_dots .slick-active button {
+  background-color: #ffffff;
+}
+
+.header__slider_dots li {
+  width: 8px;
+  height: 8px;
+}
+.slick-arrow {
+  display: block;
+  width: 55px;
+  height: 55px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  font-size: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  bottom: 0;
+}
+.slick-next {
+  background-image: url("../img/content-img/arrow_right.png");
+  right: 0;
+}
+.slick-prev {
+  background-image: url("../img/content-img/arrow_left.png");
+  right: 65px;
+}
+.submenu {
+  position: absolute;
+  top: 100%;
+  right: -100px;
+  background-color: #F5F5F5;
+  padding: 35px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 25px;
+  z-index: 5;
+
+  // display: none;
+}
+.header__menu_item:hover .submenu, .submenu:hover  {
+  display: grid;
+}
+.submenu__catalog {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 45px;
+  grid-row-gap: 25px;
+  grid-row: 1/3;
+}
+.submenu__catalog_partBox {
+}
+.submenu__catalog_partTitle {
+
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin: 15px 0;
+  }
+}
+.submenu .pagination-container li {
+  display: none;
+}
+.submenu .pagination-container li:last-child, .submenu .pagination-container li:first-child {
+display: block;
+}
+.submenu__catalog_list {
+}
+.submenu__catalog_item {
+}
+.submenu__catalog_link {
+}
+.submenu__catalogPdf_box {
+}
+.submenu__catalogPdf_list {
+}
+.submenu__catalogPdf_item {
+}
+.submenu__catalogPdf_link {
+}
+.pagination {
+}
+.submenu__news_box {
+}
+.submenu__news_item {
+}
+.submenu__news_img {
+}
+.submenu__news_title {
+}
+.submenu__news_text {
+}
