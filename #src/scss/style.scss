@@ -142,13 +142,11 @@ a:hover {
 
 }
 .header__menu_item {
-  @include thisFont("Roboto Condensed", 400, normal, 23px, #9E9E9E, 20px);
-  text-transform: uppercase;
+
   position: relative;
   align-self: stretch;
   display: flex;
   align-items: center;
-  cursor: pointer;
   &::after {
     content: "";
     display: block;
@@ -163,6 +161,15 @@ a:hover {
   }
   &:hover::after {
     max-width: 32px;
+  }
+}
+
+.header__menu_item a {
+  @include thisFont("Roboto Condensed", 400, normal, 23px, #9E9E9E, 20px);
+  text-transform: uppercase;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
   }
 }
 .header__sliderbox {
@@ -223,7 +230,7 @@ a:hover {
   width: 8px;
   height: 8px;
 }
-.slick-arrow {
+.header__sliderbox .slick-arrow {
   display: block;
   width: 55px;
   height: 55px;
@@ -237,11 +244,11 @@ a:hover {
   position: absolute;
   bottom: 0;
 }
-.slick-next {
+.header__sliderbox .slick-next {
   background-image: url("../img/content-img/arrow_right.png");
   right: 0;
 }
-.slick-prev {
+.header__sliderbox .slick-prev {
   background-image: url("../img/content-img/arrow_left.png");
   right: 65px;
 }
@@ -252,7 +259,7 @@ a:hover {
   background-color: #F5F5F5;
   padding: 35px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 385px);
   grid-column-gap: 40px;
   grid-row-gap: 25px;
   z-index: 5;
@@ -286,8 +293,25 @@ a:hover {
   display: none;
 }
 .submenu .pagination-container li:last-child, .submenu .pagination-container li:first-child {
-display: block;
+  display: block;
 }
+.submenu .pagination-container li:last-child a, .submenu .pagination-container li:first-child a, .submenu .pagination-container li:last-child span, .submenu .pagination-container li:first-child span, .pagination_news_prev, .pagination_news_next {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  border: none;
+  box-shadow: none;
+}
+.submenu .pagination-container li:last-child a, .submenu .pagination-container li:last-child span, .pagination_news_next {
+  background-image: url("../img/content-img/arrow_right_menu.png");
+}
+.submenu .pagination-container li:first-child a, .submenu .pagination-container li:first-child span, .pagination_news_prev {
+  background-image: url("../img/content-img/arrow_left_menu.png");
+}
+
 .submenu__catalog_list {
 }
 .submenu__catalog_item {
@@ -302,11 +326,22 @@ display: block;
 }
 .submenu__catalogPdf_link {
 }
-.pagination {
+.pagination_news {
+  display: flex;
+  gap: 10px;
 }
 .submenu__news_box {
+  overflow: hidden;
+}
+.submenu__news_list {
+  display: flex;
+  position: relative;
+  overflow: unset; 
+  left: 0;
+  transition: all 0.5s ease-out;
 }
 .submenu__news_item {
+  width: 100%;
 }
 .submenu__news_img {
 }
