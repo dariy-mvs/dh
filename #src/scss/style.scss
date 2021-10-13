@@ -33,7 +33,15 @@ h2, .header2 {
     font-size: 26px;
   }
 }
-
+h3, .header3 {
+  @include thisFont("Roboto-Condensed", 300, normal, 32px, #212121, 28px);
+  @include md {
+    font-size: 26px;
+  }
+  @include sm {
+    font-size: 22px;
+  }
+}
 p, span, .paragraph {
   @include thisFont("Roboto-Regular", 400, normal, 24px, #212121, 16px);
 }
@@ -126,6 +134,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   min-height: 135px;
+  position: relative;
 }
 
 .header__logoLink {
@@ -133,6 +142,10 @@ a:hover {
 .header__logo {
   width: 215px;
   height: 50px;
+  @include lg {
+    width: 190px;
+    height: auto;
+  }
 }
 .header__menu {
   display: flex;
@@ -140,9 +153,25 @@ a:hover {
   align-items: center;
   gap: 30px;
 
+  @include xl {
+    position: relative;
+  }
+  @include md {
+    display: none;
+    position: absolute;
+    top: 100%;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    right: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 6;
+  }
 }
-.header__menu_item {
+.is-active {
+}
 
+.header__menu_item {
   position: relative;
   align-self: stretch;
   display: flex;
@@ -162,14 +191,26 @@ a:hover {
   &:hover::after {
     max-width: 32px;
   }
+  @include xl {
+    position: static;
+  }
+  @include md {
+    align-self: center;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+  }
 }
 
-.header__menu_item a {
+.topMenu__link {
   @include thisFont("Roboto Condensed", 400, normal, 23px, #9E9E9E, 20px);
   text-transform: uppercase;
   cursor: pointer;
   &:hover {
     text-decoration: none;
+  }
+  @include md {
+    color: #000;
   }
 }
 .header__sliderbox {
@@ -187,6 +228,9 @@ a:hover {
   @include thisFont("Roboto-Regular", 400, normal, 28px, #FFFFFF, 20px);
   display: inline-block;
   margin: 35px 0;
+  @include md {
+    margin-bottom: 45px;
+  }
 }
 
 .header__slide_btn {
@@ -210,6 +254,9 @@ a:hover {
   position: absolute;
   bottom: 27px;
   left: calc(50% - 30px);
+  @include md {
+    bottom: 80px;
+  }
 }
 .header__slider_dots button {
   display: block;
@@ -263,11 +310,36 @@ a:hover {
   grid-column-gap: 40px;
   grid-row-gap: 25px;
   z-index: 5;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  display: none;
+  @include xl {
+    right: 0;
+  }
+  @include lg {
+    grid-template-columns: repeat(1, 385px);
+    grid-column-gap: 0;
+  }
+  @include md {
+    position: static;
+    grid-template-columns: 100%;
+    padding: 20px;
+  }
+}
+.active_menu .submenu {
+  display: grid;
+  max-height: 99999px;
 
-  // display: none;
+}
+.hamburger {
+  display: none;
+  @include md {
+    display: block;
+  }
 }
 .header__menu_item:hover .submenu, .submenu:hover  {
   display: grid;
+  max-height: 9999px;
 }
 .submenu__catalog {
   display: grid;
@@ -275,8 +347,17 @@ a:hover {
   grid-column-gap: 45px;
   grid-row-gap: 25px;
   grid-row: 1/3;
+  @include sm {
+    grid-template-columns: 100%;
+    grid-column-gap: 0;
+  }
 }
 .submenu__catalog_partBox {
+  @include sm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .submenu__catalog_partTitle {
 
@@ -317,21 +398,45 @@ a:hover {
 .submenu__catalog_item {
 }
 .submenu__catalog_link {
+  @include thisFont("Roboto-Regular", 400, normal, 24px, #212121, 16px);
 }
 .submenu__catalogPdf_box {
+  display: flex;
+  flex-direction: column;
+  min-height: 158px;
 }
 .submenu__catalogPdf_list {
+  flex: 1 0 auto;
+  @include sm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .submenu__catalogPdf_item {
+  background-image: url("../img/content-img/pdf_icon.png");
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  background-size: 25px;
+  padding-left: 33px;
 }
 .submenu__catalogPdf_link {
+  line-height: 28px;
 }
 .pagination_news {
   display: flex;
   gap: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  @include md {
+    position: static;
+    grid-column: 1/3;
+  }
 }
 .submenu__news_box {
   overflow: hidden;
+  position: relative;
 }
 .submenu__news_list {
   display: flex;
@@ -342,10 +447,302 @@ a:hover {
 }
 .submenu__news_item {
   width: 100%;
+  flex: 1 0 auto;
+  display: grid;
+  grid-template-columns: auto 90px;
+  grid-gap: 10px;
 }
 .submenu__news_img {
+  grid-column: 1/3;
 }
 .submenu__news_title {
+  @include thisFont("Roboto-Condensed", 300, normal, 32px, #212121, 28px);
+  display: inline-block;
+  margin-top: 40px;
+  margin-bottom: 35px;
+  grid-column: 1/3;
+  @include md {
+    font-size: 26px;
+    margin: 0px;
+  }
+  @include sm {
+    font-size: 22px;
+  }
 }
 .submenu__news_text {
+  @include md {
+    grid-column: 1/3;
+  }
+}
+
+// article главной
+
+.systemBlockMain {
+  margin-top: 80px;
+  @include md {
+    margin-top: 50px;
+  }
+}
+.preview_block {
+  display: grid;
+  grid-template-columns: auto 180px;
+  grid-gap: 30px;
+}
+.preview__span {
+  @include thisFont("Roboto-Condensed", 400, normal, 20px, #9E9E9E, 28px);
+  grid-column: 1/3;
+}
+.article__title {
+}
+.article__title_link {
+}
+.systemBlock__list {
+  margin-top: 75px;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(3, 1fr);
+  @include md {
+    margin-top: 40px;
+  }
+}
+.systemBlock__item:nth-child(4n + 1) {
+  grid-column: 1/2;
+}
+.systemBlock__item:nth-child(4n + 2) {
+  grid-column: 2/4;
+}
+.systemBlock__item:nth-child(4n + 3) {
+  grid-column: 1/3;
+}
+.systemBlock__item:nth-child(4n + 4) {
+  grid-column: 3/4;
+}
+.systemBlock__item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.systemBlock__item .img_link {
+  width: 100%;
+  height: 350px;
+  display: inline-block;
+
+}
+.systemBlock__item_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.systemBlock__item_linkBox {
+  background-color: #F5F5F5;
+  padding: 32px;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    transform: rotate(45deg);
+    top: -9px;
+    left: 32px;
+    background-color: #F5F5F5;
+  }
+}
+.systemBlock__item_link {
+  @include thisFont("Roboto-Condensed", 300, normal, 28px, #212121, 32px);
+}
+.systemBlock__item_tooltip {
+  max-height: 0;
+  padding: 0;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  position: absolute;
+  width: 100%;
+  background-color: #E10025;
+  bottom: 0;
+  color:#FFFFFF;
+  display: grid;
+  grid-template-columns: auto 50px;
+  grid-gap: 20px;
+  .systemBlock__item_tiooltiLink, .systemBlock__item_tootlipTitle, .systemBlock__item_tooltipText  {
+    display: none;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    transform: rotate(45deg);
+    top: -9px;
+    left: 32px;
+    background-color: #E10025;
+    display: none;
+  }
+}
+.systemBlock__item:hover .systemBlock__item_tooltip {
+  display: grid;
+  max-height: 999px;
+  padding: 35px 30px;
+  &::before {
+    display: block;
+  }
+  .systemBlock__item_tiooltiLink, .systemBlock__item_tootlipTitle, .systemBlock__item_tooltipText {
+    display: block;
+  }
+}
+
+.systemBlock__item_tootlipTitle {
+  @include thisFont("Roboto-Condensed", 300, normal, 32px, #ffffff, 28px);
+  display: inline-block;
+  grid-column: 1/3;
+}
+.systemBlock__item_tooltipText {
+  @include thisFont("Roboto-Regular", 300, normal, 24px, #ffffff, 16px);
+}
+.systemBlock__item_tiooltiLink {
+  width: 40px;
+  height: 40px;
+  background-image: url("../img/content-img/arrow_right_menu.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center center;
+  align-self: end;
+}
+.preview_ink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #212121;
+  @include thisFont("Roboto-Condensed", 400, normal, 20px, #212121, 23px);
+}
+
+.newsMain__list {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  @include md {
+    margin-top: 50px;
+  }
+}
+.newsMain__item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  min-width: 30%;
+}
+.newsMain__imgbox {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+.newsMain__date {
+  position: absolute;
+  background-color: #E10025;
+  color: #ffffff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+.newsMain__imgLink {
+  width: 100%;
+}
+.newsMain__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.newsMain__text {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: auto 50px;
+  grid-gap: 20px;
+  background-color: #F5F5F5;
+  flex: 1 0 auto;
+}
+.newsMain__title {
+  grid-column: 1/3;
+}
+.newsMain__link {
+  @include thisFont("Roboto-Condensed", 400, normal, 28px, #212121, 32px);
+  text-transform: uppercase;
+}
+.newsMain__preview {
+
+}
+.arrow_link {
+  display: inline-block;
+  background-image: url("../img/content-img/arrow_right_menu.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center center;
+  align-self: end;
+  width: 40px;
+  height: 40px;
+}
+
+.videobox {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: rgb(195, 206, 202);
+  margin-top: 80px;
+  @include md {
+    margin-top: 50px;
+  }
+}
+
+.catalogMain {
+  display: flex;
+  gap: 50px;
+}
+.systemBlockMain {
+}
+.catalogMain__list {
+  margin-top: 80px;
+  @include md {
+    margin-top: 50px;
+  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  flex: 1 1;
+}
+.catalogMain__item {
+  display: flex;
+  flex-direction: column;
+}
+.catalogMain__item_imgLink {
+  width: 100%;
+  height: 138px;
+}
+.catalogMain__item_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.catalogMain__item_linkBox {
+  flex: 1 0 auto;
+  background-color: #F5F5F5;
+  padding: 20px;
+  background-image: url("../img/content-img/arrow_right_menu.png");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+}
+.catalogMain__item_link { 
+  @include thisFont("Roboto-Condensed", 400, normal, 20px, #020D18, 23px);
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.catalogMain__img_box {
+  flex: 1 1;
+}
+.catalogMain__img {
+  object-fit: contain;
 }
