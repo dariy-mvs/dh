@@ -853,8 +853,9 @@ a:hover {
 .portfolioMain__item:nth-child(10n + 3) {
   grid-column: 4/6;
   grid-row: 1/3;
+  max-height: 904px;
   .img_link {
-    max-height: 904px;
+    max-height: 802px;
   }
 }
 .portfolioMain__item:nth-child(10n + 4) {
@@ -900,6 +901,15 @@ a:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 120px;
+  margin-top: 80px;
+  @include md {
+    margin-top: 50px;
+  }
+}
+.footerForm__preview_text {
+  @include thisFont("Roboto-Condensed-Light", 400, normal, 20px, #212121, 28px);
 }
 .footerForm_section_box {
   display: flex;
@@ -909,23 +919,59 @@ a:hover {
 .footerForm__textbox {
   display: flex;
   flex-direction: column;
+  gap: 25px;
+  max-width: 370px;
   
 }
 .footerForm__title {
 }
 .footerForm__text {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .footerForm__address_link {
+  @include thisFont("Roboto-Medium", 500, normal, 30px, #212121, 28px);
+  
 }
 .footerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 570px;
+  flex: 1 1;
 }
 .footerForm__label {
+  width: 100%;
 }
 .footerForm_field {
+  border: 2px solid #212121;
+  width: 100%;
+  padding: 20px 23px;
+  @include placeholder(#212121, 14px, "Roboto-Condensed");
+  background-color: transparent;
+}
+input.footerForm_field {
+  height: 55px;
 }
 .textarea {
+  height: 178px;
 }
 .agree_text {
+  display: inline-block;
+  margin-top: 10px;
 }
 .footerForm__submit {
+  width: 180px;
+  height: 55px;
+  background-color: #E10025;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+  align-self: flex-end;
+  margin-top: 10px;
+  &:hover {
+    background-color: #be0221;
+  }
 }
