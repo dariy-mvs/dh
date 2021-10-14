@@ -95,6 +95,15 @@ $( document ).ready( () => {
       dots: true,
       dotsClass: 'sertificate__list_dots',
       slidesToShow: 2,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     } );
 } );
