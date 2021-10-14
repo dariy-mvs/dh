@@ -89,5 +89,12 @@ $( document ).ready( () => {
     } );
   }
 
+    // slider в header
 
+    $( '.sertificate__list' ).slick( {
+      dots: true,
+      dotsClass: 'sertificate__list_dots',
+      slidesToShow: 2,
+      slidesToScroll: 1
+    } );
 } );
