@@ -15,7 +15,7 @@
   <script src="js/index.js"></script>
   <title>dh</title>
 </head>
-<body class="homepage">
+<div class="homepage">
 @@include("_header.html")
 <main class="product">
   <div class="product__box">
@@ -66,40 +66,127 @@
   </div>
   <div class="product__tabs_box">
     <ul class="product__tabs_list">
-      <li class="product__tabs_item">описание</li>
-      <li class="product__tabs_item">характеристики</li>
-      <li class="product__tabs_item">документы</li>
-      <li class="product__tabs_item">применен в проектах</li>
+      <li class="product__tabs_item active-tab" data-tab="description">описание</li>
+      <li class="product__tabs_item" data-tab="specifications">характеристики</li>
+      <li class="product__tabs_item" data-tab="docs">документы</li>
+      <li class="product__tabs_item" data-tab="projects">применен в проектах</li>
     </ul>
     <div class="product__tabs_contentWrap">
-      <div class="product__tabs_content">
+      <div class="product__tabs_content active-tab-content" data-tab-cont="description">
         111111<br>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dicta quam corporis rem sed vitae libero deserunt aspernatur, labore, accusamus nulla praesentium possimus qui iure.
       </div>
-      <div class="product__tabs_content">
+      <div class="product__tabs_content" data-tab-cont="specifications">
         222222<br>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dicta quam corporis rem sed vitae libero deserunt aspernatur, labore, accusamus nulla praesentium possimus qui iure.
       </div>
-      <div class="product__tabs_content">
+      <div class="product__tabs_content" data-tab-cont="docs">
         333333<br>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dicta quam corporis rem sed vitae libero deserunt aspernatur, labore, accusamus nulla praesentium possimus qui iure.
       </div>
-      <div class="product__tabs_content">
+      <div class="product__tabs_content" data-tab-cont="projects">
         <ul class="product__project_list">
           <li class="product__project_item">
             <a href="" class="product__project_imgLink">
-              <img src="img/desctop-img/ц3у.png" alt="" class="product__project_itemImg">
+              <img src="img/desctop-img/Rectangle34.png" alt="" class="product__project_itemImg">
             </a>
-            <div class="product__project_itemDescr">
+            <a href="" class="product__project_itemTitle">Fraser Suites соответствует высоким стандартам Alsterfleet</a>
+            <p class="product__project_itemText">Приводы по способу применения классифицируются как вентиляционные, т.е. открывающие окна для проветривания и как приводы для дымоудаления, т.е. открывающие окна с целью противодымной вентиляции.</p>
+          </li>
+          <li class="product__project_item">
+            <a href="" class="product__project_imgLink">
+              <img src="img/desctop-img/Rectangle34.png" alt="" class="product__project_itemImg">
+            </a>
               <a href="" class="product__project_itemTitle">Fraser Suites соответствует высоким стандартам Alsterfleet</a>
               <p class="product__project_itemText">Приводы по способу применения классифицируются как вентиляционные, т.е. открывающие окна для проветривания и как приводы для дымоудаления, т.е. открывающие окна с целью противодымной вентиляции.</p>
-            </div>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </main>
+</div>
+<article class="anotherProdcts">
+  <div class="container">
+    <div class="preview_block">
+      <span class="preview__span">Вам может подойдет</span>
+      <h2 class="article__title"><a href="" class="article__title_link header1">Сопутствующие товары</a></h2>
+    </div>
+    <ul class="anotherProducts__list catalog__grid">
+      <li class="catalog__item">
+        <a href="" class="img_link"><img src="img/desctop-img/ц3у.png" alt="" class="catalog__item_img"></a>
+        <div class="catalog__item_textBlock">
+          <a href="" class="catalog__item_seriesLink">VCD Series</a>
+          <a href="" class="catalog__item_name">VCD-0203-1-ACB</a>
+          <a href="" class="catalog__item_link">подробнее</a>
+        </div>
+      </li>
+      <li class="catalog__item">
+        <a href="" class="img_link"><img src="img/desctop-img/ц3у.png" alt="" class="catalog__item_img"></a>
+        <div class="catalog__item_textBlock">
+          <a href="" class="catalog__item_seriesLink">VCD Series</a>
+          <a href="" class="catalog__item_name">VCD-0203-1-ACB</a>
+          <a href="" class="catalog__item_link">подробнее</a>
+        </div>
+      </li>
+      <li class="catalog__item">
+        <a href="" class="img_link"><img src="img/desctop-img/ц3у.png" alt="" class="catalog__item_img"></a>
+        <div class="catalog__item_textBlock">
+          <a href="" class="catalog__item_seriesLink">VCD Series</a>
+          <a href="" class="catalog__item_name">VCD-0203-1-ACB</a>
+          <a href="" class="catalog__item_link">подробнее</a>
+        </div>
+      </li>
+      <li class="catalog__item">
+        <a href="" class="img_link"><img src="img/desctop-img/ц3у.png" alt="" class="catalog__item_img"></a>
+        <div class="catalog__item_textBlock">
+          <a href="" class="catalog__item_seriesLink">VCD Series</a>
+          <a href="" class="catalog__item_name">VCD-0203-1-ACB</a>
+          <a href="" class="catalog__item_link">подробнее</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</article>
+<div class="container mounting__container">
+  <div class="preview_block">
+    <span class="preview__span">Визуализация монтажа</span>
+    <h2 class="article__title"><a href="" class="article__title_link header1">Цепной привод</a></h2>
+  </div>
+<div class="mounting__box">
+  <img src="img/desctop-img/mounting_img.png" alt="" class="mounting__img">
+  <form action="" class="mounting__form">
+    <label for="" class="mounting__label">
+      <span class="mounting__field_preview">Тип окна:</span>
+      <select name="" id="">
+        <option value="">Откидное</option>
+        <option value="">Откидное2</option>
+        <option value="">Откидное3</option>
+      </select>
+    </label>
+    <label for="" class="mounting__label">
+      <span class="mounting__field_preview">Открывание створки:</span>
+      <select name="" id="">
+        <option value="">Откидное</option>
+        <option value="">Откидное2</option>
+        <option value="">Откидное3</option>
+      </select>
+    </label>
+    <label for="" class="mounting__label">
+      <span class="mounting__field_preview">Крепление привода:</span>
+      <select name="" id="">
+        <option value="">Откидное</option>
+        <option value="">Откидное2</option>
+        <option value="">Откидное3</option>
+      </select>
+    </label>
+    <div class="mounting__submitBox">
+      <span class="mountig__counter">Найдено 12 комбинаций</span>
+      <button class="mounting__submit">показать</button>
+    </div>
+  </form>
+</div>
+@@include("_popup.html")
 @@include("_footer.html")
 </body>
 </html>

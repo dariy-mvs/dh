@@ -126,4 +126,21 @@ $('.product__smSlider').slick({
   focusOnSelect: true
 }); 
 
+document.querySelector('.product__tabs_list').addEventListener('click', (e) => {
+  let target = e.target.closest('.product__tabs_item');
+  if (!target) { return; };
+  document.querySelector('.active-tab').classList.remove('active-tab');
+  document.querySelector('.active-tab-content').classList.remove('active-tab-content');
+  let dataName = target.dataset.tab;
+  document.querySelector(`[data-tab-cont=${dataName}]`).classList.add('active-tab-content');
+  target.classList.add('active-tab');
+});
+
+document.querySelector('.popup__box').addEventListener('click', (e) => {
+  let target = e.target;
+  if (!target.closest('.popup') || target.classList.contains('close_btn')) {
+    document.querySelector('.popup__box').classList.add('popup_hidden');
+  }
+})
+
 } );
