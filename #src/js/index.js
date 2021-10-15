@@ -106,4 +106,24 @@ $( document ).ready( () => {
         }
       ]
     } );
+
+// слайдер для товара каталога
+
+$('.product__bigSlider').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  fade: true,
+  asNavFor: '.product__smSlider'
+});
+$('.product__smSlider').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  asNavFor: '.product__bigSlider',
+  dots: false,
+  arrows: true,
+  centerMode: true,
+  focusOnSelect: true
+}); 
+
 } );

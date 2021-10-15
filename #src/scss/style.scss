@@ -1232,6 +1232,7 @@ input.footerForm_field {
     grid-template-columns: 100%;
   }
 }
+
 .siteBar {
   background-color: rgb(230, 216, 216);
   height: 572px;
@@ -1239,11 +1240,18 @@ input.footerForm_field {
   @include lg {
     width: 100%;
   }
-  
   //flex: 1 1;
 
 }
+.catalog__grid .siteBar {
+  @include lg{
+    grid-row: 2/3;
+  }
+}
 .siteMain {
+  @include lg{
+    grid-row: 1/2;
+  }
 }
 .sitemain__filter {
   width: 100%;
@@ -1316,13 +1324,126 @@ input.footerForm_field {
     grid-column: 1/3;
     justify-self: end;
   }
+  @include sm {
+
+  }
 }
 
-.catalog__grid.catalog__list {
+.catalog__grid .catalog__list {
   display: grid;
-  grid-template-columns: repeat(3, 270px);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
+  @include md {
+    grid-template-columns: 100%;
+    grid-column-gap: 0;
+  }
 }
 .catalog__grid .catalog__item_descr {
   display: none;
+}
+.catalog__grid .catalog__item_textBlock {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 20px;
+  grid-column-gap: 0;
+}
+
+// product
+
+.product {
+}
+.product__box {
+  display: flex;
+  gap: 30px;
+}
+.product__name_box {
+}
+.product__wrap {
+  flex: 1 1;
+  min-width: 0;
+}
+.product__name_box {
+  background-color: #F5F5F5;
+  padding: 35px;
+}
+.product__sectionName {
+  @include thisFont("Roboto-Condensed", 400, normal, 28px, #212121, 14px);
+}
+.product__name {
+  @include thisFont("Roboto-Condensed-Light", 300, normal, 53px, #212121, 46px);
+  text-transform: uppercase;
+}
+.product__bigSlider {
+  border: 1px solid #E5E4E4;
+}
+.product__descr_box {
+  width: 270px;
+}
+.product__bigSlider_item {
+}
+.product__bigSlider_img {
+  object-fit: contain;
+  height: 100%;
+  margin: 0 auto;
+}
+.product__smSlider {
+  .slick-current  .product__smSlider__item {
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #E10025;
+      position: absolute;
+      top: 100%;
+    }
+  }
+}
+
+.product .slick-arrow {
+font-size: 0;
+background-color: transparent;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: contain;
+}
+
+
+.product__smSlider_img {
+}
+.product__descr_box {
+}
+.product__descr_textWrap {
+}
+.product__descr_link {
+}
+.product__descr_text {
+}
+.product__descr_btn {
+}
+.product__tabs_box {
+}
+.product__tabs_list {
+}
+.product__tabs_item {
+}
+.product__tabs_contentWrap {
+}
+.product__tabs_content {
+}
+.product__project_list {
+}
+.product__project_item {
+}
+.product__project_imgLink {
+}
+.product__project_itemImg {
+}
+.product__project_itemDescr {
+}
+.product__project_itemTitle {
+}
+.product__project_itemText {
 }
