@@ -176,4 +176,101 @@ $('.visual__variant_list').slick({
   ]
 }); 
 
+let portfolioList = document.querySelector('.portfolio__list');
+let portfolioItemArr = [...document.querySelectorAll('.portfolio__item')];
+let portfolioProjectsArr = [...document.querySelectorAll('.portfolio__photo_project')];
+
+if (portfolioList) { 
+  portfolioItemArr.forEach((el, ind) => {
+    if (ind > 4) {
+      el.classList.add('hidden');
+    }
+  });
+  portfolioProjectsArr.forEach((el, ind) => {
+    if (ind > 2) {
+      el.classList.add('hidden');
+    }
+  });
+}
+
+  // popup для портфолио
+
+  function popupImg( selector ) {
+    $( selector ).magnificPopup( {
+      delegate: 'img',
+      type: 'image',
+      gallery: {
+        enabled: true
+      },
+      callbacks: {
+        elementParse( itemImg ) {
+          const elem = itemImg;
+          elem.src = elem.el.attr( 'src' );
+        }
+      }
+    } );
+  }
+
+
+function showMoreEvent (parentSelector, itemSelector, showItemCounter) {
+  document.querySelector(`${parentSelector} .showMore`).addEventListener('click', () => {
+    let hiddenArr = [...document.querySelectorAll(`${parentSelector} .hidden`)];
+    let moreBtn = document.querySelector(`${parentSelector} .showMore`);
+    if (hiddenArr.length) {
+      hiddenArr.forEach((el, ind) => {
+        if (ind <= showItemCounter) {
+          el.classList.remove('hidden');
+        }
+      });
+      hiddenArr.length <= showItemCounter ? moreBtn.classList.add('emptyHidden') : "";
+    } else {
+      moreBtn.classList.add('emptyHidden');
+    }
+  });
+}
+if (portfolioList) {
+  showMoreEvent('.portfolio__list_wrapper', '.portfolio__item', 4);
+  showMoreEvent('.portfolio__photo_projectsWrapper', '.portfolio__item', 2);
+  popupImg('.portfolio__photos_list');
+}
+
+
+// пагинация для портфолио
+
+function pagination( parentSelector, itemSelector, itemPage, withScroll = false ) {
+  const items = $( `${parentSelector} ${itemSelector}` );
+  const numItems = items.length;
+  const perPage = itemPage;
+
+  items.slice( perPage ).hide();
+  $( '.pagination-container' ).pagination( {
+    items: numItems,
+    itemsOnPage: perPage,
+    prevText: '<',
+    nextText: '>',
+    onPageClick( pageNumber ) {
+      const showFrom = perPage * ( pageNumber - 1 );
+      const showTo = showFrom + perPage;
+      items.hide().slice( showFrom, showTo ).show();
+      if (withScroll) {
+        $( 'html, body' ).animate( { scrollTop: 0 }, 100 );
+      }
+    }
+  } );
+}
+
+pagination('.project__fullList', '.project__fullList_item', 20);
+if (portfolioList) {
+document.querySelector('.pagination_counter_box').addEventListener('click', (e) => {
+  let target = e.target;
+  if (target.classList.contains('pagination_count')) {
+    document.querySelector('.active-count').classList.remove('active-count');
+    let count = +target.dataset.countItem;
+    pagination('.project__fullList', '.project__fullList_item', count);
+    target.classList.add('active-count');
+  }
+});
+}
+$('.portfolioItem__slider').slick();
+
 } );
