@@ -271,6 +271,9 @@ document.querySelector('.pagination_counter_box').addEventListener('click', (e) 
   }
 });
 }
-$('.portfolioItem__slider').slick();
-
+$('.portfolioItem__slider').slick({  
+  dots: true,
+  arrows: true,
+dotsClass: 'portfolioItem_dots'
+});
 } );
