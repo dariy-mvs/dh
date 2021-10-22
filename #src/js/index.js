@@ -338,5 +338,23 @@ $('.newsMain__list.newsMain__slider').slick({
     }
   ]
 });
+$('.work__photo_slider').slick({  
+  dots: true,
+  arrows: false,
+  dotsClass: 'portfolioItem_dots'
+});
+let moreBtn = document.querySelector('.bigImg_btn');
+ if (moreBtn) {
+   document.querySelector('.work__photo_slider').addEventListener('click', (e) => {
+    let target = e.target;
+    if (!target.classList.contains('bigImg_btn')) return;
+    if (document.querySelector('.activePhoto')) {
+      document.querySelector('.activePhoto').classList.remove('activePhoto');
+    }
+    let parentImgWrapper = target.closest('.history_photo_wrapper');
+    console.log(parentImgWrapper);
+    parentImgWrapper.classList.add('activePhoto');
+   });
+ }
 
 } );
